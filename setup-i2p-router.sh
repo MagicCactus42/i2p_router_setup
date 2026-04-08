@@ -137,6 +137,13 @@ else
     log "OpenSSH już nieaktywny — pomijam."
 fi
 
+if systemctl is-active --quiet dropbear 2>/dev/null; then
+  systemctl disable --now dropbear
+  log "Dropbear wylaczony"
+else
+  log "Dropbear juz nieaktywny - pomijam."
+fi
+
 # ==============================================================================
 #  5. FIREWALL (UFW)
 # ==============================================================================
